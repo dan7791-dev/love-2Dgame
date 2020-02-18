@@ -1,1 +1,1 @@
-# love-2Dgame engine using lua to build prototype game
+# prototype game using lua and love-game engine
