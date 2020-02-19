@@ -22,7 +22,7 @@ function love.draw()
 end
 
 -- Play some audio
-sound = love.audio.newSource("Ring01.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
-music = love.audio.newSource("08 Fight 1.mp3", "stream") -- the "stream" tells LÖVE to stream the file from disk, good for longer music tracks
+sound = love.audio.newSource("attack.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
+music = love.audio.newSource("epic.mp3", "stream") -- the "stream" tells LÖVE to stream the file from disk, good for longer music tracks
 sound:play()
 music:play()
