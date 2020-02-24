@@ -3,8 +3,11 @@ io.stdout:setvbuf("no")
 
 -- load variables beforehand
 function love.load()
-   x = 600
    
+   -- initialize position
+   x = 600
+   y = 50
+
    -- start time to be 0
    oscTime = 0
 
@@ -33,15 +36,29 @@ end
 
 -- pretty output
 function love.draw()
-   love.graphics.rectangle("line", x, 50, 200, 150)
+   love.graphics.rectangle("line", x, y, 200, 150)
 end
 
 -- continually update variables
 function love.update(dt)
    
-   -- only move when space is pressed
+   -- oscillate when space is pressed
    if love.keyboard.isDown("space") then
       oscillatePosition(dt)
+   end
+
+   -- move according to arrow keys
+   if love.keyboard.isDown("left") then
+      x = x - 100 * dt
+   end
+   if love.keyboard.isDown("right") then
+      x = x + 100 * dt
+   end
+   if love.keyboard.isDown("up") then
+      y = y - 100 * dt
+   end
+   if love.keyboard.isDown("down") then
+      y = y + 100 * dt
    end
 
 end
