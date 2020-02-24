@@ -1,17 +1,47 @@
--- Images on screen
+-- enable immediate console output
+io.stdout:setvbuf("no")
+
+-- load variables beforehand
 function love.load()
-   glowingImage = love.graphics.newImage("glowing.png")
+   x = 600
+   
+   -- start time to be 0
+   oscTime = 0
+
 end
 
+-- loop time over [0,2\pi] harmonically
+function incrementHarmonicTimeOscillation(dt)
+   
+   -- reset time if over
+   if (oscTime > 2 * math.pi) then
+      oscTime = 0
+   end
+
+   -- increment time by dt
+   oscTime = oscTime + dt
+
+end
+
+-- oscillate position variable 
+function oscillatePosition(dt)
+   
+   incrementHarmonicTimeOscillation(dt)
+   x = math.abs(600 * math.cos(oscTime))
+   
+end
+
+-- pretty output
 function love.draw()
-   love.graphics.draw(glowingImage,100,100)
+   love.graphics.rectangle("line", x, 50, 200, 150)
 end
 
--- Play some audio
-attack = love.audio.newSource("attack.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
-fight = love.audio.newSource("filmfight.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
-music = love.audio.newSource("epic.mp3", "stream") -- the "stream" tells LÖVE to stream the file from disk, good for longer music tracks
+-- continually update variables
+function love.update(dt)
+   
+   -- only move when space is pressed
+   if love.keyboard.isDown("space") then
+      oscillatePosition(dt)
+   end
 
-attack:play()
-fight:play()
-music:play()
+end
