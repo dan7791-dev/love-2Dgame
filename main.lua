@@ -1,6 +1,6 @@
 -- Images on screen
 function love.load()
-   glowingImage = love.graphics.newImage("glowing.png")
+   glowingImage = love.graphics.newImage("art/glowing.png")
 end
 
 function love.draw()
@@ -8,10 +8,8 @@ function love.draw()
 end
 
 -- Play some audio
-attack = love.audio.newSource("attack.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
-fight = love.audio.newSource("filmfight.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
-music = love.audio.newSource("epic.mp3", "stream") -- the "stream" tells LÖVE to stream the file from disk, good for longer music tracks
+fight = love.audio.newSource("sounds/filmfight.wav", "static") -- the "static" tells LÖVE to load the file into memory, good for short sound effects
+music = love.audio.newSource("sounds/epic.mp3", "stream") -- the "stream" tells LÖVE to stream the file from disk, good for longer music tracks
 
-attack:play()
 fight:play()
 music:play()
