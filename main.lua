@@ -8,42 +8,34 @@ io.stdout:setvbuf("no")
 -- load variables beforehand
 function love.load()
 
- -- include Rectangle object
- require("rectangle")
+   -- include object support class
+   Object = require("classic")
 
- -- initialize a new Rectangle
- rect = Rectangle()
+   -- include Shape baseclass
+   require("shape")
+
+   -- include Rectangle object
+   require("rectangle")
+
+   -- include Circle object
+   require("circle")
+
+   -- initialize a new Rectangle
+   rect = Rectangle("line", 100, 100, 100, 200, 150)
  
+   -- initialize a new Circle
+   circ = Circle("line", 100, 200, 100, 100)
+   
 end
 
 -- pretty output
 function love.draw()
-   --love.graphics.rectangle("line", x, y, 200, 150)
    rect:draw()
+   circ:draw()
 end
 
 -- continually update variables
 function love.update(dt)
-   
    rect:update(dt)
-
-   ---- oscillate when space is pressed
-   --if love.keyboard.isDown("space") then
-   --   oscillatePosition(dt)
-   --end
-
-   ---- move according to arrow keys
-   --if love.keyboard.isDown("left") then
-   --   x = x - 100 * dt
-   --end
-   --if love.keyboard.isDown("right") then
-   --   x = x + 100 * dt
-   --end
-   --if love.keyboard.isDown("up") then
-   --   y = y - 100 * dt
-   --end
-   --if love.keyboard.isDown("down") then
-   --   y = y + 100 * dt
-   --end
-
+   circ:update(dt)
 end
