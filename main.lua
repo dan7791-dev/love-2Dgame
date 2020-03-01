@@ -1,6 +1,9 @@
 -- enable immediate console output
 io.stdout:setvbuf("no")
 
+-- include oscillation functions
+require("oscillation")
+
 -- load variables beforehand
 function love.load()
    
@@ -8,30 +11,6 @@ function love.load()
    x = 600
    y = 50
 
-   -- start time to be 0
-   oscTime = 0
-
-end
-
--- loop time over [0,2\pi] harmonically
-function incrementHarmonicTimeOscillation(dt)
-   
-   -- reset time if over
-   if (oscTime > 2 * math.pi) then
-      oscTime = 0
-   end
-
-   -- increment time by dt
-   oscTime = oscTime + dt
-
-end
-
--- oscillate position variable 
-function oscillatePosition(dt)
-   
-   incrementHarmonicTimeOscillation(dt)
-   x = math.abs(600 * math.cos(oscTime))
-   
 end
 
 -- pretty output
