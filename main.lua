@@ -1,3 +1,4 @@
+--! file 
 require("bgm.music")
 require("assets.animation")
 
