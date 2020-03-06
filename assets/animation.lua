@@ -4,7 +4,7 @@ function love.load()
     balloon.y = 200
     balloon.speed = 300
     balloon.angle = 0
-    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7) .. ".png")
+    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7,1) .. ".png")
 end
 
 function love.update(dt)
