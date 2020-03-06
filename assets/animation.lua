@@ -1,10 +1,18 @@
+function color()
+   for i = 1, 7 do
+      math.randomseed(os.time())
+      a = math.random(1,7)
+      return(a)
+   end
+end
+
 function love.load()
     balloon = {}
     balloon.x = 200
     balloon.y = 200
     balloon.speed = 300
     balloon.angle = 0
-    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7,1) .. ".png")
+    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. color() .. ".png")
 end
 
 function love.update(dt)
