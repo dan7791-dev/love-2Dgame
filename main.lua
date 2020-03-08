@@ -20,25 +20,45 @@ function love.load()
    -- include Circle object
    require("circle")
 
-   -- initialize a new Rectangle
-   --rect = Rectangle("line", 100, 100, 100, 200, 150)
+   -- include Car object
+   require("car")
+
+   -- initialize a couple Rectangles
+   --rect1 = Rectangle("line", 10, 10, 100, 100, 100)
+   --rect2 = Rectangle("line", 250, 120, 0, 150, 120)
  
    -- initialize a new Circle
    --circ = Circle("line", 100, 200, 100, 100)
    
-   -- load the picture of a station wagon
-   wagonImg = love.graphics.newImage("wagon.png")
-end
+   -- load up a car
+   wagon = Car("wagon.png", 10, 10, 100, 0, 0.2, 0.3) 
+   
+   end
 
 -- pretty output
 function love.draw()
-   --rect:draw()
+   
+   -- if collision detected, fill rectangles
+   --local mode
+   --if checkCollision(rect1, rect2) then
+   --   rect1.kind = "fill"
+   --   rect2.kind = "fill"
+   --else
+   --   rect1.kind = "line"
+   --   rect2.kind = "line"
+   --end
+
+   --rect1:draw()
+   --rect2:draw()
    --circ:draw()
-   love.graphics.draw(wagonImg, 0, 100, 0, 0.2, 0.2)
+   --love.graphics.draw(wagonImg, 0, 100, 0, 0.2, 0.2)
+   
+   wagon:draw()
 end
 
 -- continually update variables
 function love.update(dt)
-   --rect:update(dt)
+   --rect1:update(dt)
    --circ:update(dt)
+   wagon:update(dt)
 end
