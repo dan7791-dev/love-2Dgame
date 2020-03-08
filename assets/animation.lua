@@ -7,12 +7,19 @@ function color()
 end
 
 function love.load()
+	-- balloon assest
     balloon = {}
-    balloon.x = 200
-    balloon.y = 200
+    balloon.x = 100
+    balloon.y = 100
     balloon.speed = 300
     balloon.angle = 0
     balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. color() .. ".png")
+	
+	-- cloud asset
+	cloud = {}
+	cloud.x = 100
+	cloud.y = 100
+	cloud.image = love.graphics.newImage("assets/shapes/speech.png")
 end
 
 function love.update(dt)
@@ -28,4 +35,5 @@ end
 function love.draw()
     love.graphics.draw(balloon.image, balloon.x, balloon.y, balloon.angle)
     love.graphics.circle("fill", mouse_x, mouse_y, 5)
+	love.graphics.draw(cloud.image, cloud.x, cloud.y)
 end
