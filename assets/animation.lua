@@ -15,11 +15,11 @@ function love.load()
     balloon.angle = 0
     balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. color() .. ".png")
 	
-	-- cloud asset
-	cloud = {}
-	cloud.x = 100
-	cloud.y = 100
-	cloud.image = love.graphics.newImage("assets/shapes/speech.png")
+	-- speech_cloud asset
+	speech_cloud = {}
+	speech_cloud.x = 100
+	speech_cloud.y = 100
+	speech_cloud.image = love.graphics.newImage("assets/shapes/speech_cloud.png")
 end
 
 function love.update(dt)
@@ -30,10 +30,22 @@ function love.update(dt)
 
     balloon.x = balloon.x + balloon.speed * cos * dt
     balloon.y = balloon.y + balloon.speed * sin * dt
+	circleCollision()
+end
+
+function circleCollision()
+	print("mouse position x: ", math.floor(mouse_x))
+	print("balloon position x :", math.floor(balloon.x))
+	print("mouse position y: ", math.floor(mouse_y))
+	print("balloon position y :", math.floor(balloon.y))
+	if math.floor(mouse_x) == math.floor(balloon.x) then
+		print("Collision detected!")
+		return true
+	end
 end
 
 function love.draw()
     love.graphics.draw(balloon.image, balloon.x, balloon.y, balloon.angle)
-    love.graphics.circle("fill", mouse_x, mouse_y, 5)
-	love.graphics.draw(cloud.image, cloud.x, cloud.y)
+    love.graphics.circle("fill", mouse_x, mouse_y, 10)
+	love.graphics.draw(speech_cloud.image, speech_cloud.x, speech_cloud.y)
 end
