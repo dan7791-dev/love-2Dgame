@@ -1,4 +1,4 @@
-function color()
+function balloon_color()
    for i = 1, 7 do
       math.randomseed(os.time())
       a = math.random(1,7)
@@ -9,16 +9,16 @@ end
 function love.load()
 	-- balloon assest
     balloon = {}
-    balloon.x = 100
-    balloon.y = 100
+    balloon.x = 200
+    balloon.y = 200
     balloon.speed = 300
     balloon.angle = 0
-    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. color() .. ".png")
+    balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. balloon_color() .. ".png")
 	
 	-- speech_cloud asset
 	speech_cloud = {}
-	speech_cloud.x = 100
-	speech_cloud.y = 100
+	speech_cloud.x = 10
+	speech_cloud.y = 10
 	speech_cloud.image = love.graphics.newImage("assets/shapes/speech_cloud.png")
 end
 
@@ -30,17 +30,16 @@ function love.update(dt)
 
     balloon.x = balloon.x + balloon.speed * cos * dt
     balloon.y = balloon.y + balloon.speed * sin * dt
-	circleCollision()
+	circlePosition()
 end
 
-function circleCollision()
+function circlePosition()
 	print("mouse position x: ", math.floor(mouse_x))
 	print("balloon position x :", math.floor(balloon.x))
 	print("mouse position y: ", math.floor(mouse_y))
 	print("balloon position y :", math.floor(balloon.y))
-	if math.floor(mouse_x) == math.floor(balloon.x) then
+	if math.floor(mouse_x) == math.floor(balloon.x) or math.floor(mouse_y) == math.floor(balloon.y) then
 		print("Collision detected!")
-		return true
 	end
 end
 
