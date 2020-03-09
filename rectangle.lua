@@ -43,3 +43,19 @@ function checkCollision(a,b)
    end
 
 end
+
+-- return list of all the points of the rectangle
+function Rectangle:getPoints()
+   
+   -- clockwise starting from top left corner
+   return self.x,
+   self.y,
+   self.x + self.width,
+   self.y,
+   self.x + self.width,
+   self.y + self.height,
+   self.x,
+   self.y + self.height
+   
+end
+
