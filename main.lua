@@ -6,7 +6,7 @@ green = 206/255
 blue = 235/255
 alpha = 50/100
 love.graphics.setBackgroundColor( red, green, blue, alpha)
---love.window.setFullscreen(true, "desktop")
+love.window.setFullscreen(true, "desktop")
 
 -- keyboard controls
 function love.keypressed(key)
