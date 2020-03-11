@@ -6,18 +6,22 @@ function balloon_color()
    end
 end
 
+function star_flash()
+
+end
+
 function checkCollision()
 
 end
 
 function love.load()
-	-- speech cloud tutorial
+	-- fixed image
 	speech_cloud = {}
 	speech_cloud.x = 10
 	speech_cloud.y = 10
 	speech_cloud.image = love.graphics.newImage("assets/shapes/speech_cloud.png")
 
-	-- chase balloon
+	-- moving image relative to mouse pointer
     balloon = {}
     balloon.x = 200
     balloon.y = 200
@@ -25,11 +29,12 @@ function love.load()
     balloon.angle = 0
     balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. balloon_color() .. ".png")
 	
-	-- runaway cloud 
-	runaway_cloud = {}
-	runaway_cloud.x = 150
-	runaway_cloud.y = 150
-	runaway_cloud = love.graphics.newImage("assets/shapes/runaway_cloud.png")
+	-- image attached to mouse movement
+	sun = {}
+	sun.image = love.graphics.newImage("assets/shapes/happy_sun.png")
+	star = {}
+	star.speed = 100
+	star.image = love.graphics.newImage("assets/shapes/star_explosion.png")
 end
 
 function love.update(dt)
@@ -45,7 +50,16 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.draw(balloon.image, balloon.x, balloon.y, balloon.angle)
+   love.graphics.draw(balloon.image, balloon.x, balloon.y, balloon.angle)
 	love.graphics.draw(speech_cloud.image, speech_cloud.x, speech_cloud.y)
-	love.graphics.draw(runaway_cloud, mouse_x, mouse_y)
+	love.graphics.draw(sun.image, mouse_x, mouse_y)
+	
+	-- detect balloon collision with sun 
+	if (math.abs(math.ceil(mouse_x - balloon.x)) < 10 and math.abs(math.ceil(mouse_y - balloon.y)) < 10 ) then
+		balloon.x = 200
+		balloon.y = 200
+		love.graphics.draw(star.image, mouse_x - 100, mouse_y - 100)
+		balloon_pop = love.audio.newSource("bgm/balloon_burst.wav", "stream")
+		balloon_pop:play()
+	end
 end
