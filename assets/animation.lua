@@ -6,14 +6,6 @@ function balloon_color()
    end
 end
 
-function star_flash()
-
-end
-
-function checkCollision()
-
-end
-
 function love.load()
 	-- fixed image
 	speech_cloud = {}
@@ -33,7 +25,6 @@ function love.load()
 	sun = {}
 	sun.image = love.graphics.newImage("assets/shapes/happy_sun.png")
 	star = {}
-	star.speed = 100
 	star.image = love.graphics.newImage("assets/shapes/star_explosion.png")
 end
 
@@ -61,5 +52,6 @@ function love.draw()
 		love.graphics.draw(star.image, mouse_x - 100, mouse_y - 100)
 		balloon_pop = love.audio.newSource("bgm/balloon_burst.wav", "stream")
 		balloon_pop:play()
+		balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7) .. ".png")
 	end
 end
