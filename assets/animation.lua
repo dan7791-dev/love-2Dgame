@@ -40,8 +40,6 @@ function love.draw()
 	love.graphics.draw(sun.image, mouse_x, mouse_y)
 	
 	-- detect collision between balloon and sun
-	print("sun position relative to cloud: ",math.floor(math.sqrt(math.abs(math.ceil(mouse_x - simple_cloud.x)) + math.abs(math.ceil(mouse_y - simple_cloud.y)))))
-	print("cloud position relative to balloon: ",math.floor(math.sqrt(math.abs(math.ceil(simple_cloud.x - balloon.x)) + math.abs(math.ceil(simple_cloud.y - balloon.y)))))
 	if (math.floor(math.sqrt(math.abs(math.ceil(mouse_x - simple_cloud.x)) + math.abs(math.ceil(mouse_y - simple_cloud.y)))) < 24) then
 		balloon.x = 180
 		balloon.y = 180
