@@ -1,17 +1,11 @@
-function balloon_color()
-   for i = 1, 7 do
-      math.randomseed(os.time())
-      a = math.random(1,7)
-      return(a)
-   end
-end
+require("bgm.music")
 
 function love.load()
 	-- fixed image
-	speech_cloud = {}
-	speech_cloud.x = 10
-	speech_cloud.y = 10
-	speech_cloud.image = love.graphics.newImage("assets/shapes/speech_cloud.png")
+	simple_cloud = {}
+	simple_cloud.x = 10
+	simple_cloud.y = 10
+	simple_cloud.image = love.graphics.newImage("assets/shapes/simple_cloud.png")
 
 	-- moving image relative to mouse pointer
     balloon = {}
@@ -42,16 +36,28 @@ end
 
 function love.draw()
    love.graphics.draw(balloon.image, balloon.x, balloon.y, balloon.angle)
-	love.graphics.draw(speech_cloud.image, speech_cloud.x, speech_cloud.y)
+	love.graphics.draw(simple_cloud.image, simple_cloud.x, simple_cloud.y)
 	love.graphics.draw(sun.image, mouse_x, mouse_y)
 	
-	-- detect balloon collision with sun 
-	if (math.abs(math.ceil(mouse_x - balloon.x)) < 10 and math.abs(math.ceil(mouse_y - balloon.y)) < 10 ) then
+	-- detect collision between balloon and sun
+	if (math.abs(math.ceil(mouse_x)) + math.abs(math.ceil(mouse_y)) < 475) then
+		balloon.x = 200
+		balloon.y = 200
+	elseif (math.abs(math.ceil(mouse_x - balloon.x)) < 10 and math.abs(math.ceil(mouse_y - balloon.y)) < 10) then
 		balloon.x = 200
 		balloon.y = 200
 		love.graphics.draw(star.image, mouse_x - 100, mouse_y - 100)
-		balloon_pop = love.audio.newSource("bgm/balloon_burst.wav", "stream")
 		balloon_pop:play()
 		balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7) .. ".png")
+	else
+		print("no collision detected")
 	end
+end
+
+function balloon_color()
+   for i = 1, 7 do
+      math.randomseed(os.time())
+      a = math.random(1,7)
+      return(a)
+   end
 end

@@ -1,4 +1,3 @@
-require("bgm.music")
 require("assets.animation")
 
 red = 135/255
