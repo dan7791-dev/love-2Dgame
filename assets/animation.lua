@@ -40,7 +40,7 @@ function love.draw()
 	love.graphics.draw(sun.image, mouse_x, mouse_y)
 	
 	-- detect collision between balloon and sun
-	if (math.abs(math.ceil(mouse_x)) + math.abs(math.ceil(mouse_y)) < 475) then
+	if (math.abs((math.ceil(mouse_x)) - simple_cloud.x) < 350 and math.abs((math.ceil(mouse_y)) - simple_cloud.y) < 260) then
 		balloon.x = 200
 		balloon.y = 200
 	elseif (math.abs(math.ceil(mouse_x - balloon.x)) < 10 and math.abs(math.ceil(mouse_y - balloon.y)) < 10) then
@@ -50,7 +50,7 @@ function love.draw()
 		balloon_pop:play()
 		balloon.image = love.graphics.newImage("assets/shapes/Balloons" .. math.random(7) .. ".png")
 	else
-		print("no collision detected")
+		print("distance to cloud x: ",math.abs((math.ceil(mouse_x)) - simple_cloud.x), "distance to cloud y: ",math.abs((math.ceil(mouse_y)) - simple_cloud.y))
 	end
 end
 
