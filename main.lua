@@ -1,11 +1,10 @@
 require("assets.animation")
---require("sounds.music")
+require("sounds.music")
 
 red = 135/255
 green = 206/255
 blue = 235/255
-alpha = 50/100
-love.graphics.setBackgroundColor( red, green, blue, alpha)
+love.graphics.setBackgroundColor( red, green, blue)
 love.window.setFullscreen(true, "desktop")
 
 -- keyboard controls
